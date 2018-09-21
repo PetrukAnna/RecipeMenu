@@ -1,0 +1,175 @@
+body {
+    margin: 0;
+}
+.wrapper{
+     width: 1100px;
+     margin: 0 auto;
+}
+label[for="left"]::after {
+    content: '\25b6';
+    float:right;
+    margin: 0 20px 0 0;
+    margin-top: 110px;
+    font-size: 400%;
+}
+label[for="right"]::after {
+    content: '\25c0';
+    float: left;
+    margin-top: 110px;
+    font-size: 400%;
+    visibility: hidden;
+}
+input {
+    display: none;
+}
+#left:hover ~ label[for="left"]::after, 
+#right:hover ~ label[for="right"]::after{
+    cursor: pointer;
+}
+#left:checked ~ .container .container_recipe {
+    transform: translateX(-672px);
+    transition: 3s;
+}
+#left:checked ~ label[for="right"]::after {
+    visibility: visible;
+    transition: 3s;
+}
+#left:checked ~ label[for="left"]::after {
+    visibility: hidden;
+    transition: 3s;
+}
+#right:checked ~ .container .container_recipe {
+    transform: translateX(0px);
+    transition: 3s;
+}
+#right:checked ~ label[for="right"]::after {
+    visibility: hidden;
+    transition: 3s;
+}
+#right:checked ~ label[for="left"]::after {
+    visibility: visible;
+    transition: 3s;
+}
+.container {
+    height: 620px;
+    width: 916px;
+    margin: 0 auto;
+    overflow: hidden; 
+}
+.container_recipe {
+    position: relative;
+    height: 630px;
+    width: 1825px;
+    padding-right: 7px;
+    padding-left: 7px;
+    box-sizing: border-box;
+}
+.recipe {
+    position: relative;
+    height: 210px;
+    width: 210px;
+    margin: 48px 0 10px 10px; 
+    background: white;
+    display: inline-block;
+    overflow: hidden;
+}
+.recipe:hover {
+    transform: scale(1.15);
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(0,0,0,1);
+    height: 530px;
+    vertical-align: top;
+    cursor: pointer;
+}
+.recipe:hover .description{
+    visibility: visible;
+}
+.recipe .image {
+    position: relative;
+    height: 190px;
+    width: 200px;
+    background: lightgray;
+    margin: 5px 5px 1px 5px;
+}
+.recipe img {
+    position: relative;
+    display: block;
+    max-height: 190px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.recipe .description {
+    height: 328px;
+    width: 200px;
+    margin: 0 auto;
+    padding: 3px;
+    font-size: 12px;
+    visibility: hidden;
+    box-sizing: border-box;
+}
+.recipe .description a {
+    font-size: 14px;
+}
+.recipe .description p {
+    margin-top: 0;
+}
+.openDialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: black;
+    background: rgba(0,0,0,0.8);
+    z-index: 99999;
+    display: none;
+    pointer-events: none;
+}
+.openDialog:target {
+    display: block;
+    pointer-events: auto;
+}
+.openDialog:target ~ .closeDialog{
+    display: block;
+    pointer-events: auto;
+}
+.openDialog > div {
+    width: 570px;
+    height: 470px;
+    position: relative;
+    margin: 6% auto;
+    padding: 5px 10px 15px 10px;
+    border-radius: 10px;
+    background: #fff;
+    box-sizing: border-box;
+}
+.openDialog > div >img{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 550px;
+    height: 460px;
+    box-sizing: border-box;
+}
+.closeDialog {
+    position: absolute;
+    text-align: center;
+    width: 50px;
+    height: 40px;
+    top:5%;
+    right: 10%;
+    border-radius: 12px;
+    z-index: 99999;
+    display: none;
+    pointer-events: none;
+}
+.closeDialog>a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #ffffff;
+    border-radius: 12px;
+    font-size: 55px;
+}
+.closeDialog>a:hover{
+    color: #b0d2f5;
+    transform: scale(1.1, 1.1);
+}
